@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: kubia-pod-controller
+  namespace: replica-controller-session
+spec:
+  replicas: 2
+  selector:
+    app: kubia-pod
+  template:
+    metadata:
+      name: kubia-pod-replicaset
+      labels:
+        app: kubia-pod
+    spec:
+      containers:
+        - name: kubia
+          image: luksa/kubia
+          ports:
+            - containerPort: 8080

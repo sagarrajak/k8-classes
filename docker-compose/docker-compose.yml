@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    restart: unless-stopped
+    network_mode: "host"
+    
+    
+    
+    volumes:
+      # Configuration directory
+      - /home/sagar/jellyfin/config:/config
+      
+      # Media libraries - adjust paths to your media locations
+      - /run/media/sagar/donkeyking/hdd/movies:/media/movies:ro
+      - /run/media/sagar/donkeyking/hdd/tvshows:/media/tvshows:ro
+      - /run/media/sagar/donkeyking/hdd/music:/media/music:ro
+      
+      # Optional: For hardware transcoding
+      - /dev/dri:/dev/dri:rw
+      
+    environment:
+      # Timezone - set to your timezone
+      - TZ=Asia/Kolkata
+      # Optional: Set Jellyfin URL (for reverse proxy setups)
+      # - JELLYFIN_PublishedServerUrl=https://jellyfin.yourdomain.com
+      
+    # Optional: Resource limits
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+        reservations:
+          memory: 1G
