@@ -1,0 +1,11 @@
+# Example pod to test a common image
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test-pull
+  namespace: replicaset-example
+spec:
+  containers:
+  - name: test-container
+    image: busybox
+    command: ['sh', '-c', 'echo "Hello from BusyBox" && sleep 3600']
