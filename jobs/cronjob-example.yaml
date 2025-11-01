@@ -1,10 +1,10 @@
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: daily-backup-jobs
-  namespace: default
+  namespace: jobs-space
 spec:
-  schedule: "0 2 * * *"   # every day at 2 AM
+  schedule: "*/2 * * * *"
   jobTemplate:
     spec:
       template:
