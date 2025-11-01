@@ -1,0 +1,19 @@
+# https://kubernetes.io/docs/concepts/workloads/controllers/job/
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: myjob
+  namespace: default
+spec:
+  template:
+    metadata:
+      name: myjob
+      labels:
+        app: myjob
+    spec:
+      containers:
+      - name: cleanupjobs
+        image: busybox
+        command: ["sh", "-c", "echo Cleaning up... && sleep 100 && echo Done"]
+      restartPolicy: OnFailure
+  backoffLimit: 3
