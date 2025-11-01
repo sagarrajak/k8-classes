@@ -1,0 +1,26 @@
+# https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: ssd-deamonset
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: ssd-deamonset
+  template:
+    metadata:
+      labels:
+        app: ssd-deamonset
+    spec:
+      nodeSelector:
+        disk: ssd
+      containers:
+      - name: ssd-deamonset
+        image: luksa/ssd-monitor
+        resources:
+          limits:
+            memory: 2048Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi

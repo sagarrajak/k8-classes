@@ -1,0 +1,34 @@
+# https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: simpleset
+  namespace:  replicaset-example
+  labels:
+    app: simpleset
+spec:
+  selector:
+    matchLabels:
+      app: simpleset
+  template:
+    metadata:
+      labels:
+        app: simpleset
+    spec:
+      tolerations:
+      # this toleration is to have the daemonset runnable on master nodes
+      # remove it if your masters can't run pods
+      - key: node-role.kubernetes.io/master
+        effect: NoSchedule
+      containers:
+      - name: simpleset
+        image: nginx:latest
+        resources:
+          limits:
+            memory: "2048Mi"
+            cpu: "1000m"
+          requests:
+            cpu: "500m"
+            memory: "1024Mi"
+        ports:
+          - containerPort: 80
