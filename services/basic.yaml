@@ -1,0 +1,12 @@
+# https://kubernetes.io/docs/concepts/services-networking/service/
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubia
+  namespace: replicaset-example
+spec:
+  selector:
+    app: kubia
+  ports:
+  - port: 80
+    targetPort: 8080
