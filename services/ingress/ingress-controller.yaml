@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: example-ingress
+  namespace: replicaset-example
+  annotations:
+    # Add ingress controller specific annotations if needed
+    # For nginx ingress controller:
+    kubernetes.io/ingress.class: "nginx"
+    # nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: kubia.test.sagar
+    http:
+      paths:
+      - path: /kubia
+        pathType: Prefix
+        backend:
+          service:
+            name: kubia
+            port:
+              number: 80

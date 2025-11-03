@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello from Custom Nginx</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .timestamp {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Hello World!</h1>
+        <p>Welcome to my custom Nginx container</p>
+        <p>This is a custom HTML page served from Docker</p>
+        <p>Current time: <span id="datetime"></span></p>
+        <div class="timestamp">
+            Containerized with ❤️ using Docker & Nginx
+        </div>
+    </div>
+
+    <script>
+        // Update datetime
+        function updateDateTime() {
+            const now = new Date();
+            document.getElementById('datetime').textContent = now.toLocaleString();
+        }
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+    </script>
+</body>
+</html>
