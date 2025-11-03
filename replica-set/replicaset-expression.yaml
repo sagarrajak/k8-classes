@@ -20,4 +20,8 @@ spec:
             limits:
               memory: "2048Mi"
               cpu: "1000m"
-
+          readinessProbe:
+            exec:
+              command:
+                - ls
+                - /var/ready
