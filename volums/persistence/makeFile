@@ -1,0 +1,5 @@
+get persitancevolume:
+kubectl get pv 
+
+get persitancevolumeClaim:
+kubectl get pvc 
