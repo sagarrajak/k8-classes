@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: mypv
+  name: mypvrecycle
 spec:
   capacity:
     storage: 10Gi
@@ -11,4 +11,4 @@ spec:
     - ReadOnlyMany
   persistentVolumeReclaimPolicy: Recycle
   hostPath:
-    path: /data/pv001/
+    path: /data/pv002/
