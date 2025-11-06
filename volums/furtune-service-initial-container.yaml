@@ -1,0 +1,34 @@
+# https://kubernetes.io/docs/concepts/workloads/pods/
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "futune-service-inital-container"
+  namespace: default
+  labels:
+    app: "futune-service-inital-container"
+spec:
+  volumes:
+    - name:  html
+      emptyDir: {}
+  initContainers:
+    - name: gitclone
+      image: alpine/git:latest
+      args:
+          - clone
+          - --single-branch
+          - --
+          - https://github.com/jmutai/hello-world-nginx.git
+          - /repo
+      volumeMounts:
+        - name:  html
+          mountPath:  /repo
+  containers:
+    - image:  nginx:alpine
+      name:  nginx-container
+      volumeMounts:
+        - name:  html
+          mountPath: /usr/share/nginx/html
+      ports:
+      - containerPort: 80
+        name: http
+        protocol: TCP
