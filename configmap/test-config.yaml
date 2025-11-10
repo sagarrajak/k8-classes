@@ -1,8 +1,7 @@
-# https://kubernetes.io/docs/concepts/configuration/configmap/
-kind: ConfigMap
+# command for creating config map
 apiVersion: v1
+kind: ConfigMap
 metadata:
-  name: myconfig
-  namespace: default
+  name: app-config
 data:
-  key: value
+  APP_MODE: production
