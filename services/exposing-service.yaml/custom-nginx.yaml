@@ -11,7 +11,7 @@ spec:
   ports:
   - name: http
     protocol: TCP
-    port: 8080
-    targetPort: 80
-    nodePort: 30011
+    port: 8080  # Service port (ClusterIP)
+    targetPort: 80 # Container port inside the Pod
+    nodePort: 30011  # External port on the Node (range: 30000–32767)
 
