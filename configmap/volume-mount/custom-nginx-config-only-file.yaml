@@ -28,4 +28,7 @@ spec:
     - name: config
       configMap:
         name: fortune-nginx-config
+        items:
+        - key: my-nginx-config.conf  # key you want to mount from configmap
+          path: gzip.conf # rename file 
 
