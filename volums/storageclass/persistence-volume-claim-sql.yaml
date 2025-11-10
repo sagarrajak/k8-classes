@@ -1,0 +1,16 @@
+# https://kubernetes.io/docs/concepts/storage/persistent-volumes/
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mikube-sql
+  namespace: default
+  labels:
+    app: mikube-sql
+spec:
+  accessModes:
+  - ReadWriteOnce
+  - ReadOnlyMany
+  resources:
+    requests:
+      storage: 2Gi
+
